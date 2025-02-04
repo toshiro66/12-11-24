@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barrio&display=swap" rel="stylesheet">
+    <title>💘</title>
+    <style>
+        body {
+            background: url('rosas.jpg') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden; 
+            position: relative;
+            padding: 20px; 
+        }
+        .titulo {
+            font-size: 60px;
+            font-family: "Barrio", serif;
+            font-weight: bold;
+            font-style: normal;
+            color: rgb(2, 2, 2);
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease-in-out, slideIn 1s ease-out;
+            position: relative;
+            z-index: 1;
+            transition: transform 1s ease-in-out;
+            backdrop-filter: blur(5px); 
+            max-width: 100%; 
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .btn {
+            background: #ff4b5c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #ff1e40;
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100vh);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        @keyframes hearts {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: hearts 4s linear infinite;
+        }
+        @keyframes expandContainer {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0.9;
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
+            .titulo {
+                font-size: 7vw;
+            }
+            .contenedor {
+                padding: 10px;
+                max-width: 95%; 
+            }
+        }
+        /* Estilo para el GIF */
+        #first-gif {
+            width: 240px; /* Tamaño fijo del GIF */
+            height: 240px; /* Asegura que la altura sea igual para mantener proporciones */
+            object-fit: cover; /* Ajusta la imagen sin cambiar la proporción */
+            margin-top: 130px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="titulo">🤍 Para NICOLE el amor de mi vida, Quieres ser mi SAN Valentin? 🤍</h1> 
+    <img id="first-gif" src="mocha.gif" alt="Romantic GIF" style="width: 240px; margin-top: 130px;">
+    <div class="container" id="mensaje-container"> 
+        <h1>Hola mi princesita hermosa, te hice esto solo para decirte que desde que llegaste a mi vida todo ha cambiado para mejor y cada momento a tu lado se siente lindo, magico, unico, cada sonrisa tuya es mi razón para ser feliz, gracias por todo el amor bonito que me das a diario y por lo bonito que amas. Toda mi vida crei que no tenia suerte hasta que te encontre mi amor, hoy solo quiero decirte que eres lo mejor que tengo y este San Valentín quiero que sea el primero de muchos que podamos compartir juntos. no hay palabras para explicar lo mucho que te amo y Este San Valentín quiero pasarlo a tu lado, porque eres todo lo que siempre soñé y no hay nadie más con quien quisiera celebrar lo afortunado que soy por tenerte. ¿Te gustaria mi amor?🌹
+        </h1>
+        <button class="btn" onclick="cambiarMensaje()">Sí (solo hay si como respuesta coño)</button>
+    </div>
+
+    <script>
+         const gifs = [
+            "mocha.gif",
+            "mocha2.gif",  
+            "mocha3.gif",  
+            "mocha4.gif", 
+            "mocha5final.gif",
+            "mocha6final.gif",
+            "mocha7final.gif",
+            "mocha9final.gif",
+        ];
+
+        let gifIndex = 0;  // Comenzamos con el primer GIF
+
+        // Función que cambia el GIF cada 3 segundos
+        function cambiarGif() {
+            const gifContainer = document.getElementById("first-gif");
+            gifIndex = (gifIndex + 1) % gifs.length;  // Cambiar al siguiente GIF, vuelve al inicio cuando llega al final
+            gifContainer.src = gifs[gifIndex];  // Cambiar la fuente del GIF
+        }
+
+        setInterval(cambiarGif, 800); 
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            const emojis = ['💖', '😻', '💌', '🤍', '💘', '💝', '❤️', '🥰', '😍', '🌹', '👩‍❤️‍💋‍👨', '😘'];
+            heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+            heart.style.position = 'absolute';
+            heart.style.opacity = '0.8';
+            heart.style.animation = 'hearts 4s linear infinite';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+        setInterval(createHeart, 40);
+
+        // Cambiar el mensaje cuando se hace clic en el botón
+        function cambiarMensaje() {
+            const container = document.querySelector('#mensaje-container');
+            // Primero, eliminamos la animación de desvanecimiento y deslizamiento
+            container.style.animation = 'none';
+            // Cambiamos el contenido
+            container.innerHTML = ` 
+                <h1>Jajaja mi cocodrilita graciass por aceptar ser mi San Valentin estoy tan feliz y emocionado de que ya llegue el diaa por que se que la pasaremos muy lindo, Prometo hacerte reir, disfrutar cada segundo y sobre todo, hacer de ese dia el más inolvidable de todos por que te lo mereces mi princesita hermosa, Gracias por darme todo tu amor, por hacerme sentir especial todos los días, y por hacer que mi vida sea mucho más hermosa solo por estar tú en ella y este San Valentín quiero demostrarte cuánto te amo, no solo con palabras, sino con todo lo que soy, te amo más de lo que te imaginas mi amor, y ese día será solo el comienzo de muchos momentos felices juntos. TE AMOOO NICOLE 💖.</h1>
+            `;
+            // Aplicamos la animación de fadeIn y slideIn para el nuevo contenido
+            container.style.animation = 'fadeIn 2s ease-in-out, slideIn 1s ease-out';
+            
+            // Cambiar el gif cuando se hace clic en el botón
+            const gif = document.getElementById("first-gif");
+            gif.src = "mocha5final.gif";  // Aquí coloca la ruta del nuevo gif que deseas mostrar
+        }
+    </script>
+</body>
+</html>
